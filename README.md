@@ -31,3 +31,8 @@ Ce projet permet de classifier un animal dans une des catégories suivantes : **
      ├── process.php 
      ├── results.php 
      └── about.php 
+
+## Ouverture du server 
+``sh
+php -S localhost:8080
+``
