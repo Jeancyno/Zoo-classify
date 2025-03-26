@@ -1,17 +1,21 @@
-<?php include './../includes/header.php' ?>
+<?php include includes_path('header') ?>
 
 <div>
     <h1 class="border-l-6 border-green-700 px-2 text-4xl font-bold mb-4">Classification  <span class="text-green-700">d'un animal</span></h1>
 
     <div>
-        <form id="multiStepForm" action="process.php" method="POST">
-            <div class="step active">
-                <p class="mb-2 text-lg font-semibold">1. Quel est sa Locomotive ?</p>
-                <label class="block"><input type="radio" name="locomotive" value="Rouge" class="mr-2"> Rouge</label>
-                <label class="block"><input type="radio" name="locomotive" value="Bleu" class="mr-2"> Bleu</label>
-                <label class="block"><input type="radio" name="locomotive" value="Vert" class="mr-2"> Vert</label>
-            </div>
-
+        <form action="<?= url('process'); ?>" method="POST">
+            <?php foreach (all_characteristic() as $key => $value) : ?>
+                <div class="step ">
+                    <p class="mb-2 text-lg font-semibold"><?= $key + 1 ?>. Quel est sa "<?= $value['name']?>" ?</p>
+                    <?php if(isset($value['property']) && !empty($value['property'])) : ?>
+                        <?php foreach ($value['property'] as $property) : ?>
+                            <label class="block"><input type="checkbox" name="properties[]" value="<?= $property['id'] ?>" class="mr-2"><?= $property['libelle'] ?></label>
+                        <?php endforeach ?>
+                    <?php endif ?>
+                </div>
+            <?php endforeach ?>
+<!-- 
             <div class="step hidden">
                 <p class="mb-2 text-lg font-semibold">2. Quel est son ossature ?</p>
                 <label class="block"><input type="radio" name="ossature" value="Chien" class="mr-2"> Chien</label>
@@ -34,15 +38,16 @@
             </div>
 
 
+            -->
             <!-- Boutons de navigation -->
             <div class="mt-4 flex justify-between">
-                <button type="button" id="prevBtn" class="px-6 py-2 border border-gray-800 bg-white text-black font-semibold shadow-lg rounded-full hover:bg-gray-200 duration-300 cursor-pointer hidden">Précédent</button>
+                <button type="button" id="prevBtn" class="px-6 py-2 border border-gray-800 bg-white text-black font-semibold shadow-lg rounded-full hover:bg-gray-200 duration-300 cursor-pointer">Précédent</button>
                 <button type="button" id="nextBtn" class="px-6 py-2 border border-gray-800 bg-gray-800 text-white font-semibold shadow-lg rounded-full hover:bg-gray-600 duration-300 cursor-pointer">Suivant</button>
-                <button type="submit" id="submitBtn" class="px-6 py-2 border border-green-500 bg-green-500 text-white font-semibold shadow-lg rounded-full hover:bg-green-800 duration-300 cursor-pointer hidden">Soumettre</button>
-            </div>
+                <button type="submit" id="submitBtn" class="px-6 py-2 border border-green-500 bg-green-500 text-white font-semibold shadow-lg rounded-full hover:bg-green-800 duration-300 cursor-pointer">Soumettre</button>
+            </div> 
         </form>
     </div>
     
 </div>
-<script src="./../assets/js/script.js"></script>
-<?php include './../includes/footer.php'; ?>
+<script src="<?= assets('js/script.js') ?>"></script>
+<?php include includes_path('footer'); ?>
