@@ -26,3 +26,4 @@ function show_property(int| string $id) {
 	exec(CLI_PY . ' show.property ' . $id, $val);
 	return !empty($d = json_decode(implode("\n", $val), true)) ? $d : [];
 }
+

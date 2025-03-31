@@ -6,9 +6,10 @@ $tmp_session_dir = base_path('tmp_session');
 if(!is_dir($tmp_session_dir)) mkdir($tmp_session_dir);
 
 session_save_path($tmp_session_dir);
+
 session_start();
 
-$full_animal_knowledge_path = "C:\\Users\\####\\Documents\\Github\\animal_class_knowledge_base\\animal_knowledge";
+$full_animal_knowledge_path = "C:\\Users\\Dell\\Documents\\Github\\animal_class_knowledge_base\\animal_knowledge";
 $full_animal_knowledge_ENV_path = 'bc_ia';
 
 $animal_knowledge_path = getenv($full_animal_knowledge_ENV_path) !== false 
@@ -20,3 +21,4 @@ $animal_knowledge_path = getenv($full_animal_knowledge_ENV_path) !== false
 ;
 
 define('CLI_PY', 'python ' . $animal_knowledge_path);
+

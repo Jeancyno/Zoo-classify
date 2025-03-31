@@ -3,8 +3,6 @@
 define('ROOT', __DIR__);
 
 include_once __DIR__ . DIRECTORY_SEPARATOR . 'config.php';
-// echo "<pre>";
-// var_dump(all_characteristic());exit;
 
 $path = trim(trim($_SERVER['PATH_INFO'] ?? '', '/'));
 

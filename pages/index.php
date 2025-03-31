@@ -1,4 +1,4 @@
-<?php include includes_path('header') ?>
+<?php include includes_path('header')?>
 
 <div>
     <h1 class="border-l-6 border-green-700 px-2 text-4xl font-bold mb-4">Classification  <span class="text-green-700">d'un animal</span></h1>
